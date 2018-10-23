@@ -194,7 +194,7 @@ def bubbleSort(myList):
     while curr is not None:
         pointer = curr.next
         while pointer is not None:
-            #If the current count is less than pointer count, swap bothe the count values and password values
+            #If the current count is less than pointer count, swap both the count values and password values
             if curr.count < pointer.count:
                 curr.count, pointer.count = pointer.count, curr.count
                 curr.password, pointer.password = pointer.password, curr.password
