@@ -272,4 +272,6 @@ def main():
                 
         except ValueError:
             print("Invalid input please try again.")
+        except UnboundLocalError:
+            print("Must create linked list first before sorting")
 main()
