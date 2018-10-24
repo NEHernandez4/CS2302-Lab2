@@ -4,8 +4,8 @@
 # Lab 2 Option B
 # Submitted By: Noemi Hernandez
 # Date last edited: 23 October 2018
-# The purpose of this program is to read from a file a list of
-# user names and passwords, then check the list to see how many
+# The purpose of this program is to read from a file a list
+# user names and passwords, and check the list to see how many
 # times a certain password was use, then print out the top
 # 20 most used passwords from that list
 
@@ -194,7 +194,7 @@ def bubbleSort(myList):
     while curr is not None:
         pointer = curr.next
         while pointer is not None:
-            #If the current count is less than pointer count, swap both the count values and password values
+            #If the current count is less than pointer count, swap bothe the count values and password values
             if curr.count < pointer.count:
                 curr.count, pointer.count = pointer.count, curr.count
                 curr.password, pointer.password = pointer.password, curr.password
@@ -232,12 +232,13 @@ def main():
         
         try:
             function= int(input("Please type the number only: "))
-            
+            #######################################################
             if function == 1:
                 #Creates a linked list directly from the file
                 myList= createLinkedList(filename)
                 if myList is not None:
                     fileExsits= True
+            #######################################################
             elif function == 2:
                 #Creates a Dictionary of the passwords
                 dic= createDict(filename)
@@ -245,25 +246,27 @@ def main():
                 myListFromDict= createLLusingDic(dic)
                 if myListFromDict is not None:
                     fileExsits= True
+            #######################################################
             elif function == 3:
-                myList= mergeSort(myList)
-                myListFromDict= mergeSort(myListFromDict)
                 if myList is not None:
+                    myList= mergeSort(myList)
                     printTop20(myList)
-                    print("--------------------------")
+                    print("--------------------------")                    
                 if myListFromDict is not None:
+                    myListFromDict= mergeSort(myListFromDict)
                     printTop20(myListFromDict)
                     print("--------------------------")
-
+            #######################################################
             elif function == 4:
-                myList= bubbleSort(myList)
-                myListFromDict= bubbleSort(myListFromDict)
                 if myList is not None:
+                    myList= bubbleSort(myList)
                     printTop20(myList)
-                    print("--------------------------")
+                    print("--------------------------")                    
                 if myListFromDict is not None:
+                    myListFromDict= bubbleSort(myListFromDict)
                     printTop20(myListFromDict)
                     print("--------------------------")
+           #######################################################         
             elif function== 5:
                 print("Thank you, have a nice day :)")
                 valid= False
