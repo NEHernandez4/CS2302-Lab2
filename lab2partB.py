@@ -3,11 +3,14 @@
 # Instructor: Diego Aguirre
 # Lab 2 Option B
 # Submitted By: Noemi Hernandez
-# Date last edited: 23 October 2018
+# Date last edited: 7 November 2018
 # The purpose of this program is to read from a file a list
 # user names and passwords, and check the list to see how many
 # times a certain password was use, then print out the top
 # 20 most used passwords from that list
+
+from timeit import default_timer as timer
+import sys
 
 class Node(object):
     password = ""
@@ -234,38 +237,82 @@ def main():
             function= int(input("Please type the number only: "))
             #######################################################
             if function == 1:
+                start = timer()
                 #Creates a linked list directly from the file
                 myList= createLinkedList(filename)
+                
+                runtime = timer() - start
+                print("Runtime for creating linked list straight from file:", round(runtime*1000, 3), "milliseconds. \n")
+                
                 if myList is not None:
                     fileExsits= True
             #######################################################
             elif function == 2:
+                start = timer()
                 #Creates a Dictionary of the passwords
                 dic= createDict(filename)
                 #Creates a Linked List using the Dictionary
                 myListFromDict= createLLusingDic(dic)
+                
+                runtime = timer() - start
+                print("Runtime for creating linked list from a dictionary:", round(runtime*1000, 3), "milliseconds. \n")
+                
                 if myListFromDict is not None:
                     fileExsits= True
             #######################################################
             elif function == 3:
+                start = timer()
                 if myList is not None:
                     myList= mergeSort(myList)
+                    runtime1 = timer() - start
+                    
+                    print("----------Linked list straight from file----------")
+                    start = timer()
                     printTop20(myList)
-                    print("--------------------------")                    
+                    runtime2= timer()- start
+                    
+                print("Runtime for merge sorted linked list:", round(runtime1 *1000, 3), "milliseconds. \n")
+                print("Runtime for printing linked list:", round(runtime2 *1000, 3), "milliseconds. \n")
+                
+                start = timer()
                 if myListFromDict is not None:
                     myListFromDict= mergeSort(myListFromDict)
+                    runtime1 = timer() - start
+                    
+                    print("----------Linked list straight from dictionary----------")
+                    start = timer()
                     printTop20(myListFromDict)
-                    print("--------------------------")
+                    runtime2= timer()- start
+                    
+                print("Runtime for merge sorted linked list:", round(runtime1 *1000, 3), "milliseconds. \n")
+                print("Runtime for printing linked list:", round(runtime2 *1000, 3), "milliseconds. \n")
             #######################################################
             elif function == 4:
+                start = timer()
                 if myList is not None:
                     myList= bubbleSort(myList)
+                    runtime1 = timer() - start
+                    
+                    print("----------Linked list straight from file----------")
+                    start = timer()
                     printTop20(myList)
-                    print("--------------------------")                    
+                    runtime2= timer()- start
+                    
+                print("Runtime for bubble sorted linked list:", round(runtime1 *1000, 3), "milliseconds. \n")
+                print("Runtime for printing linked list:", round(runtime2 *1000, 3), "milliseconds. \n")
+                
+                start = timer()
                 if myListFromDict is not None:
                     myListFromDict= bubbleSort(myListFromDict)
+                    runtime1 = timer() - start
+                    
+                    print("----------Linked list straight from dictionary----------")
+                    start = timer()
                     printTop20(myListFromDict)
-                    print("--------------------------")
+                    runtime2= timer()- start
+                    
+                print("Runtime for bubble sorted linked list:", round(runtime1 *1000, 3), "milliseconds. \n")
+                print("Runtime for printing linked list:", round(runtime2 *1000, 3), "milliseconds. \n")
            #######################################################         
             elif function== 5:
                 print("Thank you, have a nice day :)")
